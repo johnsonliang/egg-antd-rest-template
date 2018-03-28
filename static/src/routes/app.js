@@ -106,8 +106,8 @@ const App = ({ children, location, dispatch, app, loading }) => {
   return (
     <div>
       <Helmet>
-        <title>RestAPI Module</title>
-        <link rel="icon" href={config.logoSrc} type="image/x-icon" />
+        <title>{config.name}</title>
+        <link rel="icon" href={config.icon} type="image/x-icon" />
         {config.iconFontUrl ? <script src={config.iconFontUrl} /> : ""}
       </Helmet>
       {login ? (
