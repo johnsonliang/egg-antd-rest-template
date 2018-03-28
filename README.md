@@ -1,4 +1,4 @@
-# Egg Restapi Module Tool
+# egg-antd-rest-template
 
 a example of eggjs2.0, react, antd, dva2.0, webpack, mysql, restful api and other stuff made it work...
 

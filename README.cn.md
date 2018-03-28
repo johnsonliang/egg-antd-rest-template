@@ -1,4 +1,4 @@
-# Egg Restful Api Module Tool
+# egg-antd-rest-template
 
 一个使用 eggjs2.0, react, antd, dva2.0, webpack, mysql 通过模块管理配置模块表跟表结构来生成对应的restful api的实例。
 
