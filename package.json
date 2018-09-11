@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "pro": "EGG_SERVER_ENV=prod nohup node dispatch.js > stdout.log 2> stderr.log &",
-    "dev": "npm run server & npm run dev_static",
-    "dev_static": "webpack-dev-server --inline --hot --watch --progress --config ./static/build/webpack.dev.config.js",
-    "build": "webpack  --progress --config ./static/build/webpack.prod.config.js && node ./scripts/copy.js",
+    "dev": "npm run server & npm run web",
+    "web": "webpack-dev-server --inline --hot --watch --progress --config ./web/build/webpack.dev.config.js",
+    "build": "webpack  --progress --config ./web/build/webpack.prod.config.js && node ./scripts/copy.js",
     "server": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "egg-bin test"

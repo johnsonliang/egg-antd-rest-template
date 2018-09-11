@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
-const sourcePath = path.join(__dirname, "./static/src");
+const sourcePath = path.join(__dirname, "./web/src");
 const outputPath = path.join(__dirname, "./../../app/view/public/");
 const rucksack = require("rucksack-css");
 const autoprefixer = require("autoprefixer");
@@ -17,7 +17,7 @@ const postcssBasePlugins = [
 
 module.exports = {
   entry: {
-    index: "./static/src/index.js",
+    index: "./web/src/index.js",
     vendor: ["react", "react-dom", "whatwg-fetch"]
   },
   output: {

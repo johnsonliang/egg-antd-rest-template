@@ -31,7 +31,7 @@ npm run dev
 
 也可以使用：
 
-npm run dev_static 开发前端react+antd的页面
+npm run web 开发前端react+antd的页面
 
 npm run server 开发后端服务器的逻辑
 
