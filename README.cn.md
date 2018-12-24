@@ -5,7 +5,8 @@
  
 
 ## 更新日志:
-
+2018年5月份  搭建环境
+2018年12月   修复了一下历史问题
 
 ## 开发
 
@@ -13,7 +14,9 @@
 
 install mysql
 start mysql
+新建数据db:test_egg_antd
 import testdb.sql to mysql
+
 
 ```
 npm install
