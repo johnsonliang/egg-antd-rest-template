@@ -1,7 +1,7 @@
 // 1 获取内容列表，分页，每页几个
-exports.index = function*() {
+exports.index = async function() {
   const response = { success: false, message: "操作失败" };
-  const result = yield this.service.tableinfo.index();
+  const result = await this.service.tableinfo.index();
   if (result) {
     response.message = "操作成功";
     response.success = true;
@@ -11,9 +11,9 @@ exports.index = function*() {
   this.status = 200;
 };
 // 2 根据ID获取内容信息
-exports.show = function* () {
+exports.show = async function () {
   const response = { success: false, message: "操作失败" };
-  const result = yield this.service.tableinfo.show(this.params);
+  const result = await this.service.tableinfo.show(this.params);
   if (result) {
     response.message = "操作成功";
     response.success = true;
@@ -24,9 +24,9 @@ exports.show = function* () {
 };
 
 // 3 创建内容
-exports.create = function* () {
+exports.create = async function () {
   const response = { success: false, message: "操作失败" };
-  const result = yield this.service.tableinfo.create(this.request.body);
+  const result = await this.service.tableinfo.create(this.request.body);
   if (result) {
     response.message = "操作成功";
     response.success = true;
@@ -36,12 +36,12 @@ exports.create = function* () {
   this.status = 200;
 };
 // 4 更新内容信息
-exports.update = function* () {
+exports.update = async function () {
   const response = { success: false, message: "操作失败" };
   let params = { res: this.request.body.tableName };
-  const result1 = yield this.service.tableinfo.destroy(params);
+  const result1 = await this.service.tableinfo.destroy(params);
   if (result1) {
-    const result2 = yield this.service.tableinfo.create(this.request.body);
+    const result2 = await this.service.tableinfo.create(this.request.body);
     if (result2) {
       response.message = "操作成功";
       response.success = true;
@@ -53,9 +53,9 @@ exports.update = function* () {
 };
 
 // 5 删除内容信息
-exports.destroy = function* () {
+exports.destroy = async function () {
   const response = { success: false, message: "操作失败" };
-  const result = yield this.service.tableinfo.destroy(this.params);
+  const result = await this.service.tableinfo.destroy(this.params);
   if (result) {
     response.message = "操作成功";
     response.success = true;

@@ -1,8 +1,8 @@
 module.exports = app => {
   class UsersService extends app.Service {
-    *login(request) {
+    async login(request) {
       let condition = { name: request.name };
-      let record = yield this.app.mysql.get("web_admin", condition);
+      let record = await this.app.mysql.get("web_admin", condition);
       return record;
     }
   }

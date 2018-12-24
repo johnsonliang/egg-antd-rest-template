@@ -1,9 +1,9 @@
 module.exports = app => {
   class TableinfoService extends app.Service {
-    *index() {
+    async index() {
       const queryStr = "show tables;";
       let result = [];
-      let record = yield this.app.mysql.query(queryStr, "");
+      let record = await this.app.mysql.query(queryStr, "");
       for (let i in record) {
         result.push(
           record[i][`Tables_in_${this.app.config.mysql.client.database}`]
@@ -11,15 +11,15 @@ module.exports = app => {
       }
       return result;
     }
-    *show(params) {
+    async show(params) {
       const tableName = params.res;
       const queryStr = `desc ${tableName};`;
-      let record = yield this.app.mysql.query(queryStr, "");
+      let record = await this.app.mysql.query(queryStr, "");
       return record;
     }
-    *primaryKey(tableName) {
+    async primaryKey(tableName) {
       const queryStr = `desc ${tableName};`;
-      let record = yield this.app.mysql.query(queryStr, "");
+      let record = await this.app.mysql.query(queryStr, "");
       let result = "";
       for (var i = record.length - 1; i >= 0; i--) {
         if (record[i]["Key"] == "PRI") {
@@ -28,7 +28,7 @@ module.exports = app => {
       }
       return result;
     }
-    *create(request) {
+    async create(request) {
       //建立新表
       const tableName = request.tableName;
       const requestData = request.data;
@@ -60,15 +60,15 @@ module.exports = app => {
         "PRIMARY KEY ( " +
         primaryKey +
         " ))ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-      let record = yield this.app.mysql.query(queryStr, "");
+      let record = await this.app.mysql.query(queryStr, "");
       return record;
     }
-    *destroy(params) {
+    async destroy(params) {
       const tableName = params.res.split(",");
       let queryStr, record;
-      for (var i = tableName.length - 1; i >= 0; i--) {
+      for (let i = tableName.length - 1; i >= 0; i--) {
         queryStr = `DROP TABLE IF EXISTS ${tableName[i]};`;
-        record = yield this.app.mysql.query(queryStr, "");
+        record = await this.app.mysql.query(queryStr, "");
       }
 
       return record;

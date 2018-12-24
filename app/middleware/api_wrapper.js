@@ -1,5 +1,5 @@
 module.exports = (options, app) => {
-  return function* apiWrapperMiddleware(next) {
+  return async function apiWrapperMiddleware(ctx, next) {
     if (this.method == "OPTIONS") {
       this.set("Access-Control-Allow-Origin", "*");
       this.set(
@@ -17,7 +17,7 @@ module.exports = (options, app) => {
     }
     // 统一处理错误和其他通用封装
     try {
-      yield next;
+      await next();
     } catch (err) {
       this.body = { message: err.message };
       this.status = 500;

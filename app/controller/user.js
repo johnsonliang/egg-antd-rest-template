@@ -2,17 +2,17 @@
 //用户登录
 module.exports = app => {
   class UserController extends app.Controller {
-    *index() {
+    async index() {
       this.ctx.body = "index";
     }
-    *authenticate() {
+    async authenticate() {
       console.log("UserController authorize");
       let { MD5 } = require("../utils/libs");
       const name = this.ctx.request.body.username;
       const pass = this.ctx.request.body.password;
       console.log(name);
-      const result = yield this.service.users.login({ name });
-      // this.ctx.headers["Access-Control-Allow-Origin"] = "*";
+      const result = await  this.service.users.login({ name });
+      // this.ctx.headers["Access-Control-Allow-Origin"] = "async ";
       // this.ctx.headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
       // this.ctx.headers["Access-Control-Allow-Credentials"] = false;
       // this.ctx.headers["Access-Control-Max-Age"] = '86400'; // 24 hours
@@ -33,14 +33,14 @@ module.exports = app => {
       this.ctx.body = response;
       this.ctx.status = 200;
     }
-    *authorize() {
+    async authorize() {
       console.log("UserController authorize");
       let { MD5 } = require("../utils/libs");
       const name = this.ctx.request.body.username;
       const pass = this.ctx.request.body.password;
       console.log(name);
-      const result = yield this.service.users.login({ name });
-      // this.ctx.headers["Access-Control-Allow-Origin"] = "*";
+      const result = await  this.service.users.login({ name });
+      // this.ctx.headers["Access-Control-Allow-Origin"] = "async ";
       // this.ctx.headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
       // this.ctx.headers["Access-Control-Allow-Credentials"] = false;
       // this.ctx.headers["Access-Control-Max-Age"] = '86400'; // 24 hours

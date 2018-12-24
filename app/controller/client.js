@@ -2,9 +2,9 @@
 
 module.exports = app => {
   class ClientController extends app.Controller {
-    *index() {
+    async index() {
       const ctx = this.ctx;
-      ctx.body = yield ctx.renderView("public/index.html");
+      ctx.body = await ctx.renderView("public/index.html");
     }
   }
   return ClientController;

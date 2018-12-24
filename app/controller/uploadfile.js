@@ -4,8 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const sendToWormhole = require("stream-wormhole");
 
-module.exports = function*() {
-  const stream = yield this.getFileStream();
+module.exports = async function() {
+  const stream = await this.getFileStream();
   const saveFileName = new Date().getTime() + stream.filename;
   let filepath = path.join(
     this.app.config.baseDir,
@@ -24,9 +24,9 @@ module.exports = function*() {
   }
   this.logger.warn("Saving %s to %s", stream.filename, filepath);
   try {
-    yield saveStream(stream, filepath);
+    await saveStream(stream, filepath);
   } catch (err) {
-    yield sendToWormhole(stream);
+    await sendToWormhole(stream);
     throw err;
   }
 
