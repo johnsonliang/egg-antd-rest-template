@@ -1,4 +1,4 @@
-exports.keys = "znkey";
+exports.keys = "johnson";
 exports.view = {
   defaultViewEngine: "nunjucks",
   mapping: {

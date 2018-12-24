@@ -6,11 +6,11 @@ exports.mysql = {
     // 端口号
     port: "3306",
     // 用户名
-    user: "rootAdmin",
+    user: "root",
     // 密码
-    password: "rootAdmin123",
+    password: "密码",
     // 数据库名
-    database: "testdb"
+    database: "test_egg_antd"
   },
   // 是否加载到 app 上，默认开启
   app: true,
