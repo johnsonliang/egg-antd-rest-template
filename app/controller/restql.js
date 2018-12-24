@@ -19,12 +19,12 @@ exports.show = async function() {
   const response = { success: false, message: "操作失败" };
   let { res } = this.params;
   delete this.params.res;
-  const tableList = await  this.service.tableinfo.index();
+  const tableList = await this.service.tableinfo.index();
   if (res && this.helper.inarray(tableList, res)) {
     // 调用 service 获取数据
-    const result = await  this.service.restql.show(res, this.params);
-    const preOne = await  this.service.restql.preOne(res, this.params);
-    const nextOne = await  this.service.restql.nextOne(res, this.params);
+    const result = await this.service.restql.show(res, this.params);
+    const preOne = await this.service.restql.preOne(res, this.params);
+    const nextOne = await this.service.restql.nextOne(res, this.params);
     if (result) {
       result.preOne = preOne[0] ? preOne[0] : "没有上一个了";
       result.nextOne = nextOne[0] ? nextOne[0] : "没有下一个了";
@@ -41,9 +41,9 @@ exports.show = async function() {
 exports.create = async function() {
   const response = { success: false, message: "操作失败" };
   let res = this.params.res;
-  const tableList = await  this.service.tableinfo.index();
+  const tableList = await this.service.tableinfo.index();
   if (res && this.helper.inarray(tableList, res)) {
-    const result = await  this.service.restql.create(res, this.request.body);
+    const result = await this.service.restql.create(res, this.request.body);
     if (result.affectedRows) {
       let returnBody = this.request.body;
       returnBody.uid = result.insertId;
@@ -59,9 +59,9 @@ exports.create = async function() {
 exports.update = async function() {
   const response = { success: false, message: "操作失败" };
   let { res } = this.params;
-  const tableList = await  this.service.tableinfo.index();
+  const tableList = await this.service.tableinfo.index();
   if (res && this.helper.inarray(tableList, res)) {
-    const result = await  this.service.restql.update(
+    const result = await this.service.restql.update(
       res,
       this.params.id,
       this.request.body
@@ -80,9 +80,9 @@ exports.update = async function() {
 exports.destroy = async function() {
   const response = { success: false, message: "操作失败" };
   let { res } = this.params;
-  const tableList = await  this.service.tableinfo.index();
+  const tableList = await this.service.tableinfo.index();
   if (res && this.helper.inarray(tableList, res)) {
-    const result = await  this.service.restql.destroy(res, this.params);
+    const result = await this.service.restql.destroy(res, this.params);
     if (result.affectedRows) {
       response.message = "操作成功";
       response.success = true;
