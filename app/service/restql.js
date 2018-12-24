@@ -19,7 +19,7 @@ module.exports = app => {
           conditionstr.lastIndexOf(" and ")
         );
       }
-      const totalsql = "select count(async ) as total from " + modal + conditionstr;
+      const totalsql = "select count(*) as total from " + modal + conditionstr;
       const totalRecord = await this.app.mysql.query(totalsql);
       return { record, totalRecord: totalRecord[0].total };
     }
@@ -62,7 +62,7 @@ module.exports = app => {
     }
     async preOne(modal, params) {
       const modalId = await this.service.tableinfo.primaryKey(modal);
-      let queryStr = `select async  from ${modal} where ${modalId} < ?  order by ${modalId} desc limit 1 `;
+      let queryStr = `select *  from ${modal} where ${modalId} < ?  order by ${modalId} desc limit 1 `;
       let sqlEscape = [params.id];
       let result = await app.mysql.query(queryStr, sqlEscape);
 
@@ -70,7 +70,7 @@ module.exports = app => {
     }
     async nextOne(modal, params) {
       const modalId = await this.service.tableinfo.primaryKey(modal);
-      let queryStr = `select async  from ${modal} where ${modalId} > ?  order by ${modalId} asc limit 1 `;
+      let queryStr = `select *  from ${modal} where ${modalId} > ?  order by ${modalId} asc limit 1 `;
       let sqlEscape = [params.id];
       let result = await app.mysql.query(queryStr, sqlEscape);
       return result;
